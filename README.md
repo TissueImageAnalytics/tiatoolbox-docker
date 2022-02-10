@@ -1,6 +1,15 @@
 # TIAToolbox-Docker
 Docker Official Image packaging for [TIAToolbox](https://github.com/TissueImageAnalytics/tiatoolbox).
 
+### Pull the image from the Github Container Registry:
+```bash
+docker pull ghcr.io/tissueimageanalytics/tiatoolbox:latest
+```
+### Use the image as a base image in a Dockerfile:
+```bash
+FROM ghcr.io/tissueimageanalytics/tiatoolbox:latest
+```
+### Build the image locally:
 1. Navigate to the Dockerfile that you want to use, based on the Python version and Operating System that you prefer
 
 2. Build the Docker image
