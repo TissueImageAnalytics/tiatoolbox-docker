@@ -75,9 +75,10 @@ jobs:
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
         with:
           context: ./3.8/Debian/
-          push: ${{ github.event_name != 'pull_request' }}
-#           tags: ${{ steps.meta.outputs.tags }}
-          tags: tiatoolbox1.3-py3.8-debian
+#           push: $/{{ github.event_name != 'pull_request' }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+#           tags: tiatoolbox1.3-py3.8-debian
 #           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -89,7 +90,7 @@ jobs:
       # transparency data even for private images, pass --force to cosign below.
       # https://github.com/sigstore/cosign
       - name: Sign the published Docker image
-        if: ${{ github.event_name != 'pull_request' }}
+#         if: ${{ github.event_name != 'pull_request' }}
         env:
           COSIGN_EXPERIMENTAL: "true"
         # This step uses the identity token to provision an ephemeral certificate
