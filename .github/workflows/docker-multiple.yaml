@@ -16,10 +16,10 @@ jobs:
         include:
           - dockerfile: ./3.7/Debian/Dockerfile
             image: ghcr.io/tissueimageanalytics/tiatoolbox-docker
-            mtag: 1.3-py3.7-debian
+            mtag: ghcr.io/tissueimageanalytics/tiatoolbox-docker:1.3-py3.7-debian
           - dockerfile: ./3.8/Debian/Dockerfile
             image: ghcr.io/tissueimageanalytics/tiatoolbox-docker
-            mtag: 1.3-py3.8-debian
+            mtag: ghcr.io/tissueimageanalytics/tiatoolbox-docker:1.3-py3.8-debian
     permissions:
       contents: read
       packages: write
