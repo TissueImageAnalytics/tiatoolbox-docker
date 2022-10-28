@@ -9,18 +9,17 @@ on:
   schedule:
     - cron: '28 4 * * *'
   push:
-    branches: [ "main" ]
+    branches: [ "dev-actions" ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "dev-actions" ]
 
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-#   IMAGE_NAME: tissueimageanalytics/tiatoolbox-docker/tree/main/Nvidia
 
 
 jobs:
@@ -78,9 +77,8 @@ jobs:
           context: ./3.8/Debian/
           push: ${{ github.event_name != 'pull_request' }}
 #           tags: ${{ steps.meta.outputs.tags }}
-          tags: 1.3-py3.8-debian
+          tags: tiatoolbox1.3-py3.8-debian
 #           labels: ${{ steps.meta.outputs.labels }}
-          labels: tiatoolbox
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
