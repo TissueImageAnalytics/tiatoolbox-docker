@@ -79,7 +79,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
 #           tags: tiatoolbox1.3-py3.8-debian
-#           labels: ${{ steps.meta.outputs.labels }}
+          labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
