@@ -35,5 +35,5 @@ jobs:
         with:
           context: ./3.8/Debian/
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: tiatoolbox:latest, ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
