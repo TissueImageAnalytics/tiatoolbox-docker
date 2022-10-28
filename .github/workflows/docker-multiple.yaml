@@ -15,9 +15,11 @@ jobs:
       matrix:
         include:
           - dockerfile: ./3.7/Debian/Dockerfile
-            image: ghcr.io/tissueimageanalytics/tiatoolbox:1.3-py3.7-debian
+            image: ghcr.io/tissueimageanalytics/tiatoolbox
+            mtag: 1.3-py3.7-debian
           - dockerfile: ./3.8/Debian/Dockerfile
-            image: ghcr.io/tissueimageanalytics/tiatoolbox:1.3-py3.8-debian
+            image: ghcr.io/tissueimageanalytics/tiatoolbox
+            mtag: 1.3-py3.8-debian
     permissions:
       contents: read
       packages: write
@@ -45,5 +47,6 @@ jobs:
           context: .
           file: ${{ matrix.dockerfile }}
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          # tags: ${{ steps.meta.outputs.tags }}
+          # labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ matrix.image }}
