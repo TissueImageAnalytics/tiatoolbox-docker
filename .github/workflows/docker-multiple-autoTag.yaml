@@ -16,14 +16,14 @@ jobs:
       fail-fast: true
       matrix:
         include:
-          - dockerfile: ./3.7/Debian/Dockerfile
-            mtag: py3.7-debian
-          - dockerfile: ./3.8/Debian/Dockerfile
-            mtag: py3.8-debian
-          - dockerfile: ./3.9/Debian/Dockerfile
-            mtag: py3.9-debian
-          - dockerfile: ./3.9/Ubuntu/Dockerfile
-            mtag: py3.9-ubuntu
+#           - dockerfile: ./3.7/Debian/Dockerfile
+#             mtag: py3.7-debian
+#           - dockerfile: ./3.8/Debian/Dockerfile
+#             mtag: py3.8-debian
+#           - dockerfile: ./3.9/Debian/Dockerfile
+#             mtag: py3.9-debian
+#           - dockerfile: ./3.9/Ubuntu/Dockerfile
+#             mtag: py3.9-ubuntu
           - dockerfile: ./3.9/Ubuntu/Dockerfile
             mtag: ${TOOLBOX_VER}
     permissions:
@@ -43,6 +43,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN  }}
 
       - name: CHECKING TAGS is latest
-        if: contains(matrix.mtag, 'latest')
+#         if: contains(matrix.mtag, 'latest')
         run: echo "${{ matrix.mtag }}"
 
