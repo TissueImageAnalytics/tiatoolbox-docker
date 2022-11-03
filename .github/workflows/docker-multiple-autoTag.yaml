@@ -44,4 +44,4 @@ jobs:
           images: ${{ matrix.image }}
 
       - name: CHECKING TAGS
-        run: echo "${{ steps.meta.outputs.tags }}"
+        run: echo "${{ steps.meta.outputs.labels }}"
