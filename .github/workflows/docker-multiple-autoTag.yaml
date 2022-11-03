@@ -42,7 +42,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN  }}
 
-      - name: CHECKING TAGS is latest
+      - name: Publishing with 'latest' tag
         if: contains(matrix.mtag, 'latest')
         run: echo "${{ matrix.mtag }}"
-
+      
+      - name: Publishing with explicit tags
+        if: ${{ !contains(matrix.mtag, 'latest') }}
+        run: echo "${{ env.image }}:${{ env.TOOLBOX_VER }}-${{ matrix.mtag }}"
