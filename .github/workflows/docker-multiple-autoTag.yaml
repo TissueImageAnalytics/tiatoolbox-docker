@@ -44,8 +44,18 @@ jobs:
 
       - name: Publishing with 'latest' tag
         if: contains(matrix.mtag, 'latest')
-        run: echo "${{ matrix.mtag }}"
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}
+          push: true
+          tags: "${{ env.image }}:${{ matrix.mtag }}"
       
       - name: Publishing with explicit tags
         if: ${{ !contains(matrix.mtag, 'latest') }}
-        run: echo "${{ env.image }}:${{ env.TOOLBOX_VER }}-${{ matrix.mtag }}"
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}
+          push: true
+          tags: "${{ env.image }}:${{ env.TOOLBOX_VER }}-${{ matrix.mtag }}"
