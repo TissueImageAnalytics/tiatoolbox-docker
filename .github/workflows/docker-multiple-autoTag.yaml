@@ -42,12 +42,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN  }}
 
-      - name: CHECKING TAGS
-        script:
-          - >
-            if [ "${{ matrix.mtag }}" == "latest" ]; then
-              tags = "${{ matrix.mtag }}"
-            else
-              tags = "${{ env.image }}:${{ env.TOOLBOX_VER }}-${{ matrix.mtag }}"
-            fi
-        run: echo "${tags}"
+      - name: CHECKING TAGS is latest
+        if: matrix.mtag == "latest"
+        run: echo "${{ matrix.mtag }}"
+      
+      - name: CHECKING TAGS is NOT latest
+        if: matrix.mtag == "latest"
+        run: echo "${{ env.image }}:${{ env.TOOLBOX_VER }}-${{ matrix.mtag }}"
