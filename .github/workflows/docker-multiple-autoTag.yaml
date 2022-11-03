@@ -5,7 +5,8 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  # ${{ github.repository }}
+  IMAGE_NAME: TissueImageAnalytics/tiatoolbox
 
 jobs:
   build-and-push-image:
