@@ -18,19 +18,14 @@ jobs:
         include:
           - dockerfile: ./3.7/Debian/Dockerfile
             mtag: py3.7-debian
-            tag: "${{ env.image }}:${{ env.TOOLBOX_VER }}-${{ matrix.mtag }}"
           - dockerfile: ./3.8/Debian/Dockerfile
             mtag: py3.8-debian
-            tag: "${{ env.image }}:${{ env.TOOLBOX_VER }}-${{ matrix.mtag }}"
           - dockerfile: ./3.9/Debian/Dockerfile
             mtag: py3.9-debian
-            tag: "${{ env.image }}:${{ env.TOOLBOX_VER }}-${{ matrix.mtag }}"
           - dockerfile: ./3.9/Ubuntu/Dockerfile
             mtag: py3.9-ubuntu
-            tag: "${{ env.image }}:${{ env.TOOLBOX_VER }}-${{ matrix.mtag }}"
           - dockerfile: ./3.9/Ubuntu/Dockerfile
             mtag: latest
-            tag: "${{ matrix.mtag }}"
     permissions:
       contents: read
       packages: write
@@ -47,15 +42,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN  }}
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
-        with:
-          images: ${{ env.image }}
-          tags: |
-              type=ref,event=branch
-              type=ref,event=pr
-              type=semver,pattern={{version}}
-              type=semver,pattern={{major}}.{{minor}}
       - name: CHECKING TAGS
-        run: echo "${{ env.tag }}"
+        script:
+          - >
+            if [ "${{ matrix.mtag }}" == "latest" ]; then
+              tags = "${{ matrix.mtag }}"
+            else
+              tags = "${{ env.image }}:${{ env.TOOLBOX_VER }}-${{ matrix.mtag }}"
+            fi
+        run: echo "${tags}"
