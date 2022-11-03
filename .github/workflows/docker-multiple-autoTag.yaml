@@ -25,7 +25,7 @@ jobs:
           - dockerfile: ./3.9/Ubuntu/Dockerfile
             mtag: py3.9-ubuntu
           - dockerfile: ./3.9/Ubuntu/Dockerfile
-            mtag: "${{ TOOLBOX_VER }}:latest"
+            mtag: "${TOOLBOX_VER}"
     permissions:
       contents: read
       packages: write
