@@ -1,12 +1,11 @@
 name: CHECKING AUTO TAG --- Build & publish Multiple tiatoolbox images
 on:
   push:
-    branches: ['dev-actions']
+    branches: ['main']
 
 env:
   REGISTRY: ghcr.io
-  # ${{ github.repository }}
-  IMAGE_NAME: TissueImageAnalytics/tiatoolbox
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-and-push-image:
@@ -44,4 +43,4 @@ jobs:
           images: ${{ matrix.image }}
 
       - name: CHECKING TAGS
-        run: echo "${{ steps.meta.outputs.labels }}"
+        run: echo "${{ steps.meta.outputs.tags }}"
