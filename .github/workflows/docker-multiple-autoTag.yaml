@@ -1,4 +1,4 @@
-name: Build & publish Multiple tiatoolbox images
+name: CHECKING AUTO TAG --- Build & publish Multiple tiatoolbox images
 on:
   push:
     branches: ['dev-actions']
@@ -42,4 +42,5 @@ jobs:
         with:
           images: ${{ matrix.image }}
 
-      - name: MOSI TAG: ${{ matrix.image }}:"${{ steps.meta.outputs.tags }}"-${{ matrix.mtag }}
+      - name: CHECKING TAGS
+        run: echo "${{ steps.meta.outputs.tags }}"
