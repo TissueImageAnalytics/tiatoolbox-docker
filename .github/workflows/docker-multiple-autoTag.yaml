@@ -25,7 +25,7 @@ jobs:
 #           - dockerfile: ./3.9/Ubuntu/Dockerfile
 #             mtag: py3.9-ubuntu
           - dockerfile: ./3.9/Ubuntu/Dockerfile
-            mtag: ${TOOLBOX_VER}
+            mtag: "${ env.image }:latest}"
     permissions:
       contents: read
       packages: write
@@ -43,6 +43,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN  }}
 
       - name: CHECKING TAGS is latest
-#         if: contains(matrix.mtag, 'latest')
+        if: contains(matrix.mtag, 'latest')
         run: echo "${{ matrix.mtag }}"
 
