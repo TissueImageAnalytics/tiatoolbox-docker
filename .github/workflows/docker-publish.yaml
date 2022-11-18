@@ -23,7 +23,11 @@ jobs:
             mtag: py3.9-debian
           - dockerfile: ./3.9/Ubuntu/Dockerfile
             mtag: py3.9-ubuntu
-          - dockerfile: ./3.9/Ubuntu/Dockerfile
+          - dockerfile: ./3.10/Debian/Dockerfile
+            mtag: py3.10-debian
+          - dockerfile: ./3.10/Ubuntu/Dockerfile
+            mtag: py3.10-ubuntu
+          - dockerfile: ./3.10/Ubuntu/Dockerfile
             mtag: latest
     permissions:
       contents: read
