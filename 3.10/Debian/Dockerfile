@@ -1,12 +1,11 @@
-FROM nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu22.04
+FROM python:3.10-slim-bullseye
 
-# To avoid tzdata blocking the build with frontend questions
-ENV DEBIAN_FRONTEND=noninteractive 
-
+#get linux packages
 RUN apt-get -y update && apt-get -y install --no-install-recommends \
     libopenjp2-7-dev libopenjp2-tools \
     openslide-tools \
     libgl1 \
+    build-essential \
     && pip3 --no-cache-dir install tiatoolbox \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
