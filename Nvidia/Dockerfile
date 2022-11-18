@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/pytorch:21.12-py3
+FROM nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu22.04
 
 # To avoid tzdata blocking the build with frontend questions
 ENV DEBIAN_FRONTEND=noninteractive 
